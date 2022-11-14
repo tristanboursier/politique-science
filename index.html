@@ -2,11 +2,12 @@
 
   <style>
 
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght=100&display=swap');
 
 body{
   font-family: 'Noto Sans', sans-serif;
   font-weight: 100;
+  font-size:12px;
 }
 
   .menu-bouton{
@@ -50,6 +51,13 @@ body{
     position:absolute;
     left:0;
     top:150px;
+    display:grid;
+    grid-template-columns: 2fr 1fr;
+    width: 100%;
+  }
+
+  #contenu{
+    padding:3%
   }
 
 </style>
@@ -72,6 +80,7 @@ body{
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@5/dist/inspector.css">
 <script type="module">
 import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
+
 import define from "https://api.observablehq.com/@guillaume-levrier/politique-science-interactive-svg-logo.js?v=3";
 new Runtime().module(define, name => {
   if (name === "polsci") return new Inspector(document.querySelector("#logo"));
@@ -110,10 +119,14 @@ for (const key in menuContent[lang]) {
 
 const langslug=lang.toLowerCase()
 
+contenu.innerHTML="";
+
   switch (key) {
     case "aprop":
     el.addEventListener("click",()=>{
-      import(`https://api.observablehq.com/@guillaume-levrier/a-propos-${langslug}@14.js?v=3`)
+      el.style.fontWeight = 600;
+
+      import(`https://api.observablehq.com/@guillaume-levrier/a-propos-${langslug}@15.js?v=3`)
       .then((module) => {
         new Runtime().module(module.default, Inspector.into("#contenu"));
       }).catch(e=>{
@@ -129,11 +142,17 @@ const langslug=lang.toLowerCase()
       break;
   }
 
+[...langDOM.children].forEach(d => {
+  if (d.innerText===lang){
+    d.style.fontWeight=500;
+  }
+});
+
   menuDiv.appendChild(el);
   }
 }
 
-regenMenu("FR")
+
 
   
   const langDOM = document.createElement("div");
@@ -151,14 +170,14 @@ regenMenu("FR")
       regenMenu(d);
       [...langDOM.children].forEach((d) => (d.style.fontWeight = 200));
 
-      el.style.fontWeight = 800;
+      el.style.fontWeight = 600;
     });
     langDOM.appendChild(el);
   });
 
   document.getElementById("langchoice").appendChild(langDOM)
   
-
+  regenMenu("FR")
 </script>
   
 </div>
