@@ -6,8 +6,8 @@
 
 body{
   font-family: 'Noto Sans', sans-serif;
-  font-weight: 100;
-  font-size:12px;
+  font-weight: 200;
+  font-size:small;
 }
 
   .menu-bouton{
@@ -133,8 +133,9 @@ pageContenuDiv.innerHTML="";
   switch (key) {
     case "aprop":
     el.addEventListener("click",()=>{
+      pageContenuDiv.innerHTML="";
+      
       el.style.fontWeight = 400;
-
       import(`https://api.observablehq.com/@guillaume-levrier/a-propos-${langslug}@15.js?v=3`)
       .then((module) => {
         new Runtime().module(module.default, Inspector.into("#pageContenu"));
