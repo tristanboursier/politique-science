@@ -1,5 +1,5 @@
 <title>Politique.science</title>
-
+<link rel="icon" href="favicon.png" />
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;600;900&display=swap');
 
@@ -58,7 +58,7 @@
     display: grid;
     grid-template-columns: 2fr 1fr;
     width: 100%;
-    height: 100%;
+    height: calc(100% - 125px);
   }
 
   #contenu {
@@ -68,6 +68,40 @@
 
   #pageContenu {
     padding: 3%;
+  }
+
+  .filsTab{
+    padding:10px;
+    border-bottom: 1px solid rgba(60,60,60, 0.1);
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  .filsTab:hover{
+    background-color: rgba(230, 230, 230, 0.1);
+  }
+
+  .titre{
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 30px;
+    padding-top: 15px;
+    padding-bottom: 22.5px;
+  }
+
+  .tabBandTop{
+    display:flex;
+    justify-content: space-around;
+    padding: 0px;
+    border-bottom: 1px solid rgba(130, 130, 130, 0.1);
+    align-items: center;
+  }
+  .tabBandBot{
+    display: flex;
+    padding: 5px;
+    border-top: 1px solid rgba(130, 130, 130, 0.1);
+    flex-direction: column;
+    font-size: 15px;
   }
 </style>
 
@@ -101,9 +135,9 @@
       if (name === "polsci") return new Inspector(document.querySelector("#logo"));
     });
 
-    const pageContenuDiv = document.getElementById("pageContenu");
+const pageContenuDiv = document.getElementById("pageContenu");
 
-    var currentSet = {}
+    var currentSet = {langslug:"fr"}
 
     const regen = (lang) => {
       const menuContent = {
@@ -130,7 +164,7 @@
 
       menuDiv.innerHTML = "";
       for (const key in menuContent[lang]) {
-        var el = document.createElement("div");
+        const el = document.createElement("div");
         el.innerText = menuContent[lang][key];
 
         var langslug = getlangslug(lang)
@@ -139,14 +173,16 @@
         switch (key) {
           case "aprop":
             el.addEventListener("click", () => {
-
-
               displayContenu(el, langslug, "a-propos")
-
-
             });
 
             break;
+
+            case "actu":
+            el.addEventListener("click", () => {
+              displayContenu(el, langslug, repertoire[0].mod)
+            });
+            
 
           default:
             break;
@@ -160,6 +196,8 @@
 
         menuDiv.appendChild(el);
       }
+
+      updateFils()
     };
 
     const langDOM = document.createElement("div");
@@ -185,6 +223,7 @@
         el.style.fontWeight = 600;
       });
       langDOM.appendChild(el);
+
     });
 
     document.getElementById("langchoice").appendChild(langDOM);
@@ -198,15 +237,16 @@
         `https://api.observablehq.com/@guillaume-levrier/${mod}-${langslug}.js?v=3`
       )
         .then((module) => {
+          if (el){
           el.style.fontWeight = 600;
-
+        }
           new Runtime().module(
             module.default,
             Inspector.into("#pageContenu")
           );
         })
         .catch((e) => {
-          contenu.innerText = e;
+          pageContenuDiv.innerText = "[]"
         });
     }
 
@@ -219,5 +259,77 @@
       return langslug
     }
 
-    regen("FR")
+    var repertoire = [
+              {
+            itemType:"conf",
+            itemDesc:{fr:"Séminaire particulier"},
+            date:"2019/04/24",
+            lieu:{fr:"dans les nuages"},
+            mod:"semgen-test",
+            titre:{fr:"Ceci est un item test"},
+            personne:"Max Web-aire",
+          }
+]
+
+repertoire.forEach(d=>d.date=new Date(d.date))
+
+repertoire = repertoire.sort((a,b)=>b.date - a.date);
+
+/*
+<article itemscope="" itemprop="event" itemtype="https://schema.org/Event">
+  <a href="/actu/the-political-impacts-of-technological-change" aria-label="En savoir plus sur ce Rendez-vous">
+    <aside class="divers">
+      <p class="label" data-icon="news" itemprop="name">Séminaire TransNum</p>
+      <p class="date-news" aria-label="date"><time itemprop="startDate" datetime="2022-11-25"><span></span>
+        <span class="startDate"><span class="day-name">vendredi </span>
+        <span class="day-num">25 </span><span class="month-name">novembre </span>
+        <span class="year">2022</span></span></time></p>
+        
+        </aside><h1 data-level-1="title"><span class="opacity">The political impacts of technological change</span></h1>
+        <aside class="details"><p class="hours-news" aria-label="Horaire / Schedule"><time datetime="14:30">14:30</time> 
+          <span class="between" aria-label="Jusqu'à / to">⇥</span> <time datetime="17:00">17:00</time></p></aside></a>
+          
+          </article>
+
+*/
+
+const updateFils=(type)=>{
+
+  const fils = document.getElementById("fils");
+
+  fils.innerHTML=""
+
+  function buildFilsItem(item){
+    const tab = document.createElement("div")
+    tab.className="filsTab";
+
+    console.log(currentSet.langslug)
+
+    tab.innerHTML=`
+    <div class="tabBandTop">
+      <div>${item.itemDesc[currentSet.langslug]}</div>
+      <div style="background-color:rgba(255,0,0,0.7);color:white; padding:5px" >${item.date.toLocaleDateString("fr-FR")}</div>
+    </div>
+
+    <div class="titre">${item.titre[currentSet.langslug]}</div>
+
+    <div class="tabBandBot">
+      <div>${item.personne}</div>
+      <div>${item.lieu[currentSet.langslug]}</div>
+    </div>
+    `
+    tab.addEventListener("click",()=>{
+      displayContenu(null, "fr", item.mod)
+    })
+    
+    
+    fils.appendChild(tab)
+  }
+
+  repertoire.forEach(d=>buildFilsItem(d))
+
+}
+
+
+    regen(lang)
   </script>
