@@ -1,193 +1,223 @@
 <title>Politique.science</title>
 
-  <style>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;600;900&display=swap');
 
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght=200&display=swap');
-
-body{
-  font-family: 'Noto Sans', sans-serif;
-  font-weight: 200;
-  font-size:small;
-}
-
-  .menu-bouton{
-    cursor:pointer;
+  h1 {
+    font-weight: 600;
   }
 
-  
-#page{
-  position:absolute;
-  width:100%;
-  height:100%;
-  top:0;
-  left:0;
-  margin:0px;
-  padding:0px;
-}
+  body {
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 300;
+    font-size: small;
+  }
 
-  #entete{
-  position:absolute;
-  width:100vw;
-  height:125px;
-  top:0;
-  left:0;
-  margin:0px;
-  padding:0px;
-  display: flex;
+  .menu-bouton {
+    cursor: pointer;
+  }
+
+
+  #page {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    margin: 0px;
+    padding: 0px;
+  }
+
+  #entete {
+    position: absolute;
+    width: 100vw;
+    height: 125px;
+    top: 0;
+    left: 0;
+    margin: 0px;
+    padding: 0px;
+    display: flex;
     flex-direction: row;
     align-content: center;
     align-items: center;
-       justify-content: space-around;
-       border-bottom: 1px solid rgba(0,0,0,0.1);
-}
+    justify-content: space-around;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
 
-  #menu{
+  #menu {
     display: grid;
     justify-items: start;
-    cursor:pointer;
+    cursor: pointer;
     width: 300px;
   }
-  
-  #corps{
-    position:absolute;
-    left:0;
-    top:125px;
-    display:grid;
+
+  #corps {
+    position: absolute;
+    left: 0;
+    top: 125px;
+    display: grid;
     grid-template-columns: 2fr 1fr;
     width: 100%;
-    height:100%;
+    height: 100%;
   }
 
-  #contenu{
-    height:100%;
-    border-right:1px solid rgba(0,0,0,0.1);
+  #contenu {
+    height: 100%;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
   }
 
-  #pageContenu{
-    padding:3%;
+  #pageContenu {
+    padding: 3%;
   }
-
 </style>
 
 <div id="page">
   <div id="entete">
     <div id="logo"></div>
     <div id="menu"></div>
-<div id="langchoice"></div>
-    
+    <div id="langchoice"></div>
+
   </div>
 
-<div id="corps">
-  <div id="contenu">
-    <div id="pageContenu"></div>
+  <div id="corps">
+    <div id="contenu">
+      <div id="pageContenu"></div>
+    </div>
+    <div id="fils"></div>
   </div>
-  <div id="fils"></div>
-</div>
 
 
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@5/dist/inspector.css">
-<script type="module">
-import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@5/dist/inspector.css">
+  <script type="module">
+    import {
+      Runtime,
+      Inspector,
+    } from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
 
-import define from "https://api.observablehq.com/@guillaume-levrier/politique-science-interactive-svg-logo.js?v=3";
-new Runtime().module(define, name => {
-  if (name === "polsci") return new Inspector(document.querySelector("#logo"));
-});
-  
-  
-const pageContenuDiv=document.getElementById("pageContenu")
-
-  const regenMenu=(lang)=>{
-    const menuContent = {
-    FR: {
-      actu: "ACTUALITÉS",
-      dico: "DICTIONNAIRE",
-      conf: "CONFÉRENCES",
-      aprop: "À PROPOS"
-    },
-    EN: {
-      actu: "NEWS",
-      dico: "DICTIONARY",
-      conf: "CONFERENCES",
-      aprop: "ABOUT"
-    },
-    中文: {
-      actu: "新闻",
-      dico: "词典",
-      conf: "会议",
-      aprop: "关于"
-    }
-  };
-const menuDiv = document.getElementById("menu")
-
-menuDiv.innerHTML=""
-for (const key in menuContent[lang]) {
-  var el = document.createElement("div");
-  el.innerText=menuContent[lang][key];
-
-const langslug=lang.toLowerCase()
-
-pageContenuDiv.innerHTML="";
-
-  switch (key) {
-    case "aprop":
-    el.addEventListener("click",()=>{
-      pageContenuDiv.innerHTML="";
-      
-      el.style.fontWeight = 400;
-      import(`https://api.observablehq.com/@guillaume-levrier/a-propos-${langslug}@15.js?v=3`)
-      .then((module) => {
-        new Runtime().module(module.default, Inspector.into("#pageContenu"));
-      }).catch(e=>{
-        contenu.innerText=e
-      })
-        
-});
-
-
-      break;
-  
-    default:
-      break;
-  }
-
-[...langDOM.children].forEach(d => {
-  if (d.innerText===lang){
-    d.style.fontWeight=500;
-  }
-});
-
-  menuDiv.appendChild(el);
-  }
-}
-
-
-
-  
-  const langDOM = document.createElement("div");
-
-  const langs = ["FR", "EN", "中文"];
-
-  let lang = "FR";
-
-  langs.forEach((d) => {
-    const el = document.createElement("div");
-    el.innerText = d;
-    el.style.cursor = "pointer";
-    el.addEventListener("click", () => {
-       lang = d;
-      regenMenu(d);
-      [...langDOM.children].forEach((d) => (d.style.fontWeight = 200));
-
-      el.style.fontWeight = 400;
+    import define from "https://api.observablehq.com/@guillaume-levrier/politique-science-interactive-svg-logo.js?v=3";
+    new Runtime().module(define, (name) => {
+      if (name === "polsci") return new Inspector(document.querySelector("#logo"));
     });
-    langDOM.appendChild(el);
-  });
 
-  document.getElementById("langchoice").appendChild(langDOM)
-  
-  regenMenu("FR")
-</script>
-  
-</div>
+    const pageContenuDiv = document.getElementById("pageContenu");
+
+    var currentSet = {}
+
+    const regen = (lang) => {
+      const menuContent = {
+        FR: {
+          actu: "ACTUALITÉS",
+          dico: "DICTIONNAIRE",
+          conf: "CONFÉRENCES",
+          aprop: "À PROPOS",
+        },
+        EN: {
+          actu: "NEWS",
+          dico: "DICTIONARY",
+          conf: "CONFERENCES",
+          aprop: "ABOUT",
+        },
+        中文: {
+          actu: "新闻",
+          dico: "词典",
+          conf: "会议",
+          aprop: "关于",
+        },
+      };
+      const menuDiv = document.getElementById("menu");
+
+      menuDiv.innerHTML = "";
+      for (const key in menuContent[lang]) {
+        var el = document.createElement("div");
+        el.innerText = menuContent[lang][key];
+
+        var langslug = getlangslug(lang)
+
+        // need to recreate pagecontenu here if needed
+        switch (key) {
+          case "aprop":
+            el.addEventListener("click", () => {
+
+
+              displayContenu(el, langslug, "a-propos")
+
+
+            });
+
+            break;
+
+          default:
+            break;
+        }
+
+        [...langDOM.children].forEach((d) => {
+          if (d.innerText === lang) {
+            d.style.fontWeight = 500;
+          }
+        });
+
+        menuDiv.appendChild(el);
+      }
+    };
+
+    const langDOM = document.createElement("div");
+
+    const langs = ["FR", "EN", "中文"];
+
+    let lang = "FR";
+
+    langs.forEach((d) => {
+      const el = document.createElement("div");
+      el.innerText = d;
+      el.style.cursor = "pointer";
+      el.addEventListener("click", () => {
+        lang = d;
+        regen(d);
+
+        var langslug = getlangslug(d)
+
+        displayContenu(currentSet.el, langslug, currentSet.mod);
+
+        [...langDOM.children].forEach((d) => (d.style.fontWeight = 200));
+
+        el.style.fontWeight = 600;
+      });
+      langDOM.appendChild(el);
+    });
+
+    document.getElementById("langchoice").appendChild(langDOM);
+
+    const displayContenu = (el, langslug, mod) => {
+      currentSet = { el, langslug, mod }
+
+      pageContenuDiv.innerHTML = "";
+
+      import(
+        `https://api.observablehq.com/@guillaume-levrier/${mod}-${langslug}.js?v=3`
+      )
+        .then((module) => {
+          el.style.fontWeight = 600;
+
+          new Runtime().module(
+            module.default,
+            Inspector.into("#pageContenu")
+          );
+        })
+        .catch((e) => {
+          contenu.innerText = e;
+        });
+    }
+
+    const getlangslug = (lang) => {
+      var langslug = lang.toLowerCase();
+
+      if (lang === "中文") {
+        langslug = "zh";
+      }
+      return langslug
+    }
+
+    regen("FR")
+  </script>
