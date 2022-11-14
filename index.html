@@ -42,8 +42,16 @@ body{
   #menu{
     display: grid;
     justify-items: start;
+    cursor:pointer;
+    width: 300px;
   }
   
+  #corps{
+    position:absolute;
+    left:0;
+    top:150px;
+  }
+
 </style>
 
 <div id="page">
@@ -68,8 +76,9 @@ import define from "https://api.observablehq.com/@guillaume-levrier/politique-sc
 new Runtime().module(define, name => {
   if (name === "polsci") return new Inspector(document.querySelector("#logo"));
 });
-
-
+  
+  
+const contenuDiv=document.getElementById("contenu")
 
   const regenMenu=(lang)=>{
     const menuContent = {
@@ -93,13 +102,34 @@ new Runtime().module(define, name => {
     }
   };
 const menuDiv = document.getElementById("menu")
+
 menuDiv.innerHTML=""
 for (const key in menuContent[lang]) {
   var el = document.createElement("div");
   el.innerText=menuContent[lang][key];
 
-  menuDiv.appendChild(el);
+const langslug=lang.toLowerCase()
+
+  switch (key) {
+    case "aprop":
+    el.addEventListener("click",()=>{
+      import(`https://api.observablehq.com/@guillaume-levrier/a-propos-${langslug}@14.js?v=3`)
+      .then((module) => {
+        new Runtime().module(module.default, Inspector.into("#contenu"));
+      }).catch(e=>{
+        contenu.innerText=e
+      })
+        
+});
+
+
+      break;
   
+    default:
+      break;
+  }
+
+  menuDiv.appendChild(el);
   }
 }
 
