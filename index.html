@@ -2,7 +2,7 @@
 
   <style>
 
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght=100&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght=200&display=swap');
 
 body{
   font-family: 'Noto Sans', sans-serif;
@@ -38,6 +38,7 @@ body{
     align-content: center;
     align-items: center;
        justify-content: space-around;
+       border-bottom: 1px solid rgba(0,0,0,0.1);
 }
 
   #menu{
@@ -50,14 +51,20 @@ body{
   #corps{
     position:absolute;
     left:0;
-    top:150px;
+    top:125px;
     display:grid;
     grid-template-columns: 2fr 1fr;
     width: 100%;
+    height:100%;
   }
 
   #contenu{
-    padding:3%
+    height:100%;
+    border-right:1px solid rgba(0,0,0,0.1);
+  }
+
+  #pageContenu{
+    padding:3%;
   }
 
 </style>
@@ -71,7 +78,9 @@ body{
   </div>
 
 <div id="corps">
-  <div id="contenu"></div>
+  <div id="contenu">
+    <div id="pageContenu"></div>
+  </div>
   <div id="fils"></div>
 </div>
 
@@ -87,7 +96,7 @@ new Runtime().module(define, name => {
 });
   
   
-const contenuDiv=document.getElementById("contenu")
+const pageContenuDiv=document.getElementById("pageContenu")
 
   const regenMenu=(lang)=>{
     const menuContent = {
@@ -119,16 +128,16 @@ for (const key in menuContent[lang]) {
 
 const langslug=lang.toLowerCase()
 
-contenu.innerHTML="";
+pageContenuDiv.innerHTML="";
 
   switch (key) {
     case "aprop":
     el.addEventListener("click",()=>{
-      el.style.fontWeight = 600;
+      el.style.fontWeight = 400;
 
       import(`https://api.observablehq.com/@guillaume-levrier/a-propos-${langslug}@15.js?v=3`)
       .then((module) => {
-        new Runtime().module(module.default, Inspector.into("#contenu"));
+        new Runtime().module(module.default, Inspector.into("#pageContenu"));
       }).catch(e=>{
         contenu.innerText=e
       })
@@ -170,7 +179,7 @@ contenu.innerHTML="";
       regenMenu(d);
       [...langDOM.children].forEach((d) => (d.style.fontWeight = 200));
 
-      el.style.fontWeight = 600;
+      el.style.fontWeight = 400;
     });
     langDOM.appendChild(el);
   });
