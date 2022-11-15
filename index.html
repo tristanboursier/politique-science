@@ -135,6 +135,8 @@
 
 const pageContenuDiv = document.getElementById("pageContenu");
 
+var firstload=true;
+
 var currentSet = {langslug : "fr"};
 
     const regen = (lang) => {
@@ -186,6 +188,13 @@ var currentSet = {langslug : "fr"};
                   updateFils();
                 });
                 
+
+                  if (firstload){
+                    firstload=false;
+                    displayContenu(el, langslug, repertoire[0].mod);
+                     updateFils();
+                  }
+
             break;
 
             case "conf":
@@ -252,9 +261,12 @@ var currentSet = {langslug : "fr"};
       el.style.cursor = "pointer";
       el.addEventListener("click", () => {
         lang = d;
-        regen(d);
 
         var langslug = getlangslug(d)
+        
+        currentSet.langslug=langslug;
+        
+        regen(d);
 
         displayContenu(currentSet.el, langslug, currentSet.mod);
 
