@@ -1,14 +1,12 @@
 <title>Politique.science</title>
-<link rel="icon" href="favicon.png" />
-<div id="observablehq-rend-792d69ab"></div>
 
+<div id="observablehq-rend-d703776b"></div>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@5/dist/inspector.css">
 <script type="module">
 import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
-import define from "https://api.observablehq.com/@guillaume-levrier/polsci@659.js?v=3";
+import define from "https://api.observablehq.com/@guillaume-levrier/polsci.js?v=3";
 new Runtime().module(define, name => {
-  if (name === "rend") return new Inspector(document.querySelector("#observablehq-rend-792d69ab"));
+  if (name === "rend") return new Inspector(document.querySelector("#observablehq-rend-d703776b"));
 });
 </script>
-  </script>
