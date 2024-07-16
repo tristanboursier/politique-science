@@ -78,7 +78,7 @@
     <div class="link">email: <span>guillaume.levrier <br> politique.science</span></div>
   </div>
 </div>
-
+<script>
 const getdata = (val) =>
   fetch(
     `https://api.archives-ouvertes.fr/search/?q=${val}&wt=json&rows=10000&fl=docType_s,docid,authFullName_s,label_s,abstract_s,producedDate_s,conferenceTitle_s,language_s,subTitle_s,title_s,doiId_s,halId_s`
@@ -198,3 +198,4 @@ const getdata = (val) =>
 
 
               getdata("Guillaume Levrier")
+</script>
