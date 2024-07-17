@@ -3,74 +3,122 @@
 <link rel="icon" type="image/svg" href="favicon.svg" />
 
 <style>
+  @media (max-aspect-ratio: 2/2) {
+    #headBlock {
+      padding: 10px;
+      display: flex;
+      font-family: sans-serif;
+      width: calc(100% - 20px);
+      /* position: sticky; */
+      top: 0px;
+      background: white;
+      flex-direction: column;
+      align-items: center;
+    }
 
-.accroche{
-  font-family: sans-serif;
+    #identity {
+      display: flex;
+      align-items: center;
+      min-width: 450px;
+      flex-direction: column;
+    }
+
+
+    .link {
+      font-size: 22px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    #links {
+      padding-top: 20px;
+
+    }
+
+  }
+
+  @media (min-aspect-ratio: 2/2) {
+    #headBlock {
+      padding: 10px;
+      display: flex;
+      font-family: sans-serif;
+      justify-content: space-between;
+      width: calc(100% - 20px);
+      position: sticky;
+      top: 0px;
+      background: white;
+    }
+
+    #links {
+      width: 130px;
+
+    }
+
+    #identity {
+      display: flex;
+      align-items: center;
+
+    }
+
+    .link {
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+  }
+
+  .accroche {
+    font-family: sans-serif;
     padding: 15px;
-}
-  
-#links{
-  width:130px;
-}
-  
-  #name{
-    font-size:30px;
-    padding-left:20px;
-    
   }
 
-  #headshotimg{
-    max-width:100px;
-    border-radius:100px;
+
+
+  #name {
+    font-size: 30px;
+    padding-left: 20px;
+
   }
 
-  .link{
-    font-size:12px;
-        display: flex;
-    justify-content: space-between;
+  #headshotimg {
+    max-width: 100px;
+    border-radius: 100px;
   }
-  #identity{
-    display:flex;
-    align-items: center;
-    min-width:450px;
-  }
-  
-  #headBlock{
-    padding:10px;
-    display:flex;
-    font-family:sans-serif;
-    justify-content: space-between;
-    width: calc(100% - 20px);
-    position: sticky;
-    top: 0px;
-    background: white;
-  }
-  
-  .abstract{
-    cursor:pointer;
-  }
-  a[href]{
-  color:red;  
-  }
-.doi{
-  font-size:12px;
-}
 
-.output_block{
-  font-family:sans-serif;
-  font-size:14px;
-  padding:15px;
-}
-  
-.title{
-  font-weight:bolder;
-  font-size:16px;
-}
-.title_other_lang{
-  font-style: italic;
-  color:gray;
-}
-  
+
+
+
+
+
+
+  .abstract {
+    cursor: pointer;
+  }
+
+  a[href] {
+    color: red;
+  }
+
+  .doi {
+    font-size: 12px;
+  }
+
+  .output_block {
+    font-family: sans-serif;
+    font-size: 14px;
+    padding: 15px;
+  }
+
+  .title {
+    font-weight: bolder;
+    font-size: 16px;
+  }
+
+  .title_other_lang {
+    font-style: italic;
+    color: gray;
+  }
 </style>
 
 <div id="headBlock">
@@ -79,136 +127,152 @@
     <div id="name">Guillaume Levrier</div>
   </div>
   <div id="links">
-    <div class="link">twitter: <a href="https://twitter.com/g_levrier" target="_blank">@g_levrier</a></div>
-    <div class="link">google scholar: <a href="https://scholar.google.com/citations?user=IRiJFNMAAAAJ&hl=en" target="_blank">profile</a></div>
-    <div class="link">pubpeer: <a href="https://pubpeer.com/search?q=guillaume+levrier" target="_blank">profile</a></div>
-    <div class="link">linked in: <a href="https://www.linkedin.com/in/guillaume-levrier-phd-89156838/" target="_blank">profile</a></div>
-    <div class="link">email: <span>guillaume.levrier <br> politique.science</span></div>
+    <div class="link">twitter: <a href="https://twitter.com/g_levrier"
+        target="_blank">@g_levrier</a></div>
+    <div class="link">google scholar: <a
+        href="https://scholar.google.com/citations?user=IRiJFNMAAAAJ&hl=en"
+        target="_blank">profile</a></div>
+    <div class="link">pubpeer: <a
+        href="https://pubpeer.com/search?q=guillaume+levrier"
+        target="_blank">profile</a></div>
+    <div class="link">linked in: <a
+        href="https://www.linkedin.com/in/guillaume-levrier-phd-89156838/"
+        target="_blank">profile</a></div>
+    <div class="link">email: <span>guillaume.levrier <br>
+        politique.science</span></div>
   </div>
 </div>
 
-<div class="accroche">Guillaume Levrier is a political scientist working on biotechnology, currently a CNRS postdoc for the Nanobubbles ERC grant. He is affiliated to the Laboratoire Interdisciplinaire Sciences Innovations Sociétés (LISIS), and is a research associated to CEVIPOF (Sciences Po) and to the French National Library (BnF).</div>
+<div class="accroche">Guillaume Levrier is a political scientist working on
+  biotechnology, currently a CNRS postdoc for the Nanobubbles ERC grant. He is
+  affiliated to the Laboratoire Interdisciplinaire Sciences Innovations Sociétés
+  (LISIS), and is a research associated to CEVIPOF (Sciences Po) and to the
+  French National Library (BnF).</div>
 
-<div class="accroche">Guillaume Levrier est chercheur en sciences politiques spécialisé sur les biotechnologies, actuellement postdoc CNRS pour le projet ERC Nanobubbles. Il est affilié au Laboratoire Interdisciplinaire Sciences Innovations Sociétés (LISIS), est associé au CEVIPOF (Sciences Po) et à la BnF.</div>
+<div class="accroche">Guillaume Levrier est chercheur en sciences politiques
+  spécialisé sur les biotechnologies, actuellement postdoc CNRS pour le projet
+  ERC Nanobubbles. Il est affilié au Laboratoire Interdisciplinaire Sciences
+  Innovations Sociétés (LISIS), est associé au CEVIPOF (Sciences Po) et à la
+  BnF.</div>
 
 <script>
-const getdata = (val) =>
-  fetch(
-    `https://api.archives-ouvertes.fr/search/?q=${val}&wt=json&rows=10000&fl=docType_s,docid,authFullName_s,label_s,abstract_s,producedDate_s,conferenceTitle_s,language_s,subTitle_s,title_s,doiId_s,halId_s`
-  )
-    .then((response) => response.json())
-    .then((r) => r.response.docs)
-    .then((r) => {
-      const siftData = (data, authName) => {
-        const authLower = authName.toLowerCase();
+  const getdata = (val) =>
+    fetch(
+      `https://api.archives-ouvertes.fr/search/?q=${val}&wt=json&rows=10000&fl=docType_s,docid,authFullName_s,label_s,abstract_s,producedDate_s,conferenceTitle_s,language_s,subTitle_s,title_s,doiId_s,halId_s`
+    )
+      .then((response) => response.json())
+      .then((r) => r.response.docs)
+      .then((r) => {
+        const siftData = (data, authName) => {
+          const authLower = authName.toLowerCase();
 
-        const sifted = [];
+          const sifted = [];
 
-        data.forEach((d) => {
-          const authorMap = {};
+          data.forEach((d) => {
+            const authorMap = {};
 
-          d.authFullName_s.forEach(
-            (auth) => (authorMap[auth.toLowerCase()] = 1)
-          );
+            d.authFullName_s.forEach(
+              (auth) => (authorMap[auth.toLowerCase()] = 1)
+            );
 
-          if (authorMap.hasOwnProperty(authLower)) {
-            d.date = new Date(d.producedDate_s);
-            sifted.push(d);
-          }
-        });
-
-        return sifted.sort((a, b) => b.date - a.date);
-      };
-      const createblock = (output) => {
-        // for each sci output, create an HTML block
-        const cont = document.createElement("div");
-        cont.className = "output_block";
-
-        const title = document.createElement("div");
-
-        for (let i = 0; i < output.title_s.length; ++i) {
-          const title_l = document.createElement("div");
-          if (i === 0) {
-            title_l.className = "title";
-          } else {
-            title_l.className = "title_other_lang";
-          }
-
-          title_l.innerText = output.title_s[i];
-          title.append(title_l);
-        }
-
-        const authors = document.createElement("div");
-        authors.className = "authors";
-
-        for (let i = 0; i < output.authFullName_s.length; ++i) {
-          authors.innerText += output.authFullName_s[i];
-          if (
-            output.authFullName_s.length > 1 &&
-            i < output.authFullName_s.length - 1
-          ) {
-            authors.innerText += ", ";
-          }
-        }
-
-        cont.append(title);
-
-        cont.append(authors);
-
-        const date = document.createElement("div");
-        date.className = "date";
-        date.innerText =
-          output.producedDate_s + " - " + output.docType_s.toLowerCase();
-        cont.append(date);
-
-        if (output.hasOwnProperty("abstract_s")) {
-          const lang = "[" + output.language_s[0].toUpperCase() + "] ";
-          const abstract = document.createElement("div");
-          abstract.className = "abstract";
-          abstract.innerText =
-            lang +
-            output.abstract_s[0].substring(0, 240) +
-            "… [click to read more]";
-
-          abstract.addEventListener("click", (e) => {
-            if (abstract.innerText.length < 270) {
-              abstract.innerText = lang + output.abstract_s[0];
-            } else {
-              abstract.innerText =
-                lang +
-                output.abstract_s[0].substring(0, 240) +
-                "… [click to read more]";
+            if (authorMap.hasOwnProperty(authLower)) {
+              d.date = new Date(d.producedDate_s);
+              sifted.push(d);
             }
           });
 
-          cont.append(abstract);
-        }
+          return sifted.sort((a, b) => b.date - a.date);
+        };
+        const createblock = (output) => {
+          // for each sci output, create an HTML block
+          const cont = document.createElement("div");
+          cont.className = "output_block";
 
-        if (output.hasOwnProperty("doiId_s")) {
-          const doi = document.createElement("div");
+          const title = document.createElement("div");
 
-          doi.innerHTML = `<a class="doi" href="https://doi.org/${output.doiId_s}" target="_blank">${output.doiId_s}</a>`;
-          cont.append(doi);
-        } else {
-          const hal = document.createElement("div");
+          for (let i = 0; i < output.title_s.length; ++i) {
+            const title_l = document.createElement("div");
+            if (i === 0) {
+              title_l.className = "title";
+            } else {
+              title_l.className = "title_other_lang";
+            }
 
-          hal.innerHTML = `<a href="https://hal.science/${output.halId_s}" target="_blank">${output.halId_s}</a>`;
-          cont.append(hal);
-        }
-        return cont;
-      };
+            title_l.innerText = output.title_s[i];
+            title.append(title_l);
+          }
 
-      const sifted = siftData(r, val);
+          const authors = document.createElement("div");
+          authors.className = "authors";
 
-      const createList = () => {
-        const list = document.createElement("div");
-        sifted.forEach((d) => list.append(createblock(d)));
-        document.body.append(list);
-      };
+          for (let i = 0; i < output.authFullName_s.length; ++i) {
+            authors.innerText += output.authFullName_s[i];
+            if (
+              output.authFullName_s.length > 1 &&
+              i < output.authFullName_s.length - 1
+            ) {
+              authors.innerText += ", ";
+            }
+          }
 
-      createList();
-    })
+          cont.append(title);
+
+          cont.append(authors);
+
+          const date = document.createElement("div");
+          date.className = "date";
+          date.innerText =
+            output.producedDate_s + " - " + output.docType_s.toLowerCase();
+          cont.append(date);
+
+          if (output.hasOwnProperty("abstract_s")) {
+            const lang = "[" + output.language_s[0].toUpperCase() + "] ";
+            const abstract = document.createElement("div");
+            abstract.className = "abstract";
+            abstract.innerText =
+              lang +
+              output.abstract_s[0].substring(0, 240) +
+              "… [click to read more]";
+
+            abstract.addEventListener("click", (e) => {
+              if (abstract.innerText.length < 270) {
+                abstract.innerText = lang + output.abstract_s[0];
+              } else {
+                abstract.innerText =
+                  lang +
+                  output.abstract_s[0].substring(0, 240) +
+                  "… [click to read more]";
+              }
+            });
+
+            cont.append(abstract);
+          }
+
+          if (output.hasOwnProperty("doiId_s")) {
+            const doi = document.createElement("div");
+
+            doi.innerHTML = `<a class="doi" href="https://doi.org/${output.doiId_s}" target="_blank">${output.doiId_s}</a>`;
+            cont.append(doi);
+          } else {
+            const hal = document.createElement("div");
+
+            hal.innerHTML = `<a href="https://hal.science/${output.halId_s}" target="_blank">${output.halId_s}</a>`;
+            cont.append(hal);
+          }
+          return cont;
+        };
+
+        const sifted = siftData(r, val);
+
+        const createList = () => {
+          const list = document.createElement("div");
+          sifted.forEach((d) => list.append(createblock(d)));
+          document.body.append(list);
+        };
+
+        createList();
+      })
 
 
-              getdata("Guillaume Levrier")
+  getdata("Guillaume Levrier")
 </script>
