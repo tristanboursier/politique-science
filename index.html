@@ -16,6 +16,8 @@
       align-items: center;
     }
 
+
+
     #name {
       font-size: 60px;
 
@@ -41,7 +43,7 @@
     }
 
     #links {
-      padding-top: 20px;
+      padding: 60px;
     }
   }
 
@@ -49,6 +51,10 @@
     #headshotimg {
       max-width: 100px;
       border-radius: 100px;
+    }
+
+    .output_block {
+      padding-bottom: 45px;
     }
 
     #name {
@@ -262,6 +268,9 @@
             hal.innerHTML = `<a href="https://hal.science/${output.halId_s}" target="_blank">${output.halId_s}</a>`;
             cont.append(hal);
           }
+
+
+
           return cont;
         };
 
