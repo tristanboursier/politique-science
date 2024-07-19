@@ -98,7 +98,7 @@
   }
 
   .accroche {
-
+    cursor: pointer;
     padding: 15px;
   }
 
@@ -157,18 +157,27 @@
   </div>
 </div>
 
-<div class="accroche">Guillaume Levrier is a political scientist working on
-  biotechnology, currently a CNRS postdoc for the <a
-    href="https://cordis.europa.eu/project/id/951393"
-    target="_blank">Nanobubbles ERC grant</a>. He is
-  affiliated to the <a href="http://umr-lisis.fr/membre/guillaume-levrier/"
-    target="_blank">Laboratoire Interdisciplinaire Sciences Innovations Sociétés
-    (LISIS)</a>, and is a research associate to <a
-    href="https://www.sciencespo.fr/cevipof/en/researcher/guillaume-levrier.html"
-    target="_blank">CEVIPOF (Sciences Po)</a> and to the
-  French National Library (BnF).</div>
+<div class="accroche" id="descEN"></div>
 
-<div class="accroche">Guillaume Levrier est chercheur en sciences politiques
+<div class="accroche" id="descFR"></div>
+
+
+
+<script>
+
+  const description = {
+    EN: {
+      short: `Guillaume Levrier is a political scientist working on biotechnology, currently a CNRS postdoc for the 
+      <a href="https://cordis.europa.eu/project/id/951393" target="_blank">Nanobubbles ERC grant</a>. He is affiliated 
+      to the <a href="http://umr-lisis.fr/membre/guillaume-levrier/" target="_blank">Laboratoire Interdisciplinaire 
+        Sciences Innovations Sociétés (LISIS)</a>, and is a research associate to <a 
+        href="https://www.sciencespo.fr/cevipof/en/researcher/guillaume-levrier.html"
+       target="_blank">CEVIPOF (Sciences Po)</a> and to the French National Library (BnF). [Click for more info]`,
+      long: "",
+    },
+    FR: {
+      short: `Guillaume Levrier est chercheur en sciences
+  politiques
   spécialisé sur les biotechnologies, actuellement postdoc CNRS pour le <a
     href="https://cordis.europa.eu/project/id/951393" target="_blank">projet
     ERC Nanobubbles</a>. Il est affilié au <a
@@ -178,12 +187,31 @@
     Innovations Sociétés (LISIS)</a>, est associé au <a
     href="https://www.sciencespo.fr/cevipof/fr/chercheur/guillaume-levrier.html"
     target="_blank">CEVIPOF (Sciences Po)</a> et à la Bibliothèque nationale de
-  France
-  BnF.</div>
+  France (BnF). [Cliquez ici pour plus d'informations]`,
+      long: "",
+    }
+  }
 
+  const personDescription = () => {
+    Object.keys(description).forEach(d => {
+      const div = document.getElementById("desc" + d)
+      div.innerHTML = description[d].short;
+      var toggled = 0;
+      div.addEventListener("click", () => {
 
+        if (toggled) {
+          div.innerHTML = description[d].short;
+        } else {
+          div.innerHTML = description[d].long;
+        }
+        toggled = !toggled;
 
-<script>
+      })
+    })
+  }
+
+  personDescription();
+
   const getdata = (val) =>
     fetch(
       `https://api.archives-ouvertes.fr/search/?q=${val}&wt=json&rows=10000&fl=docType_s,docid,authFullName_s,label_s,abstract_s,producedDate_s,conferenceTitle_s,language_s,subTitle_s,title_s,doiId_s,halId_s,journalTitle_s`
