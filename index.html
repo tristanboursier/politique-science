@@ -3,11 +3,16 @@
 <link rel="icon" type="image/svg" href="favicon.svg" />
 
 <style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "avenir next", avenir, helvetica, "helvetica neue", ubuntu, roboto, noto, "segoe ui", arial, sans-serif;
+    line-height: 1.5;
+  }
+
   @media (max-aspect-ratio: 2/2) {
     #headBlock {
       padding: 10px;
       display: flex;
-      font-family: sans-serif;
+
       width: calc(100% - 20px);
       /* position: sticky; */
       top: 0px;
@@ -65,7 +70,7 @@
     #headBlock {
       padding: 10px;
       display: flex;
-      font-family: sans-serif;
+
       justify-content: space-between;
       width: calc(100% - 20px);
       position: sticky;
@@ -93,7 +98,7 @@
   }
 
   .accroche {
-    font-family: sans-serif;
+
     padding: 15px;
   }
 
@@ -114,7 +119,7 @@
   }
 
   .output_block {
-    font-family: sans-serif;
+
     font-size: 14px;
     padding: 15px;
   }
@@ -167,11 +172,12 @@
 <script>
   const getdata = (val) =>
     fetch(
-      `https://api.archives-ouvertes.fr/search/?q=${val}&wt=json&rows=10000&fl=docType_s,docid,authFullName_s,label_s,abstract_s,producedDate_s,conferenceTitle_s,language_s,subTitle_s,title_s,doiId_s,halId_s`
+      `https://api.archives-ouvertes.fr/search/?q=${val}&wt=json&rows=10000&fl=docType_s,docid,authFullName_s,label_s,abstract_s,producedDate_s,conferenceTitle_s,language_s,subTitle_s,title_s,doiId_s,halId_s,journalTitle_s`
     )
       .then((response) => response.json())
       .then((r) => r.response.docs)
       .then((r) => {
+
         const siftData = (data, authName) => {
           const authLower = authName.toLowerCase();
 
@@ -228,10 +234,20 @@
 
           cont.append(authors);
 
+          var venue = ""
+
+          if (output.hasOwnProperty("journalTitle_s")) {
+            venue = " - " + output.journalTitle_s;
+          }
+
+          if (output.hasOwnProperty("conferenceTitle_s")) {
+            venue = " - " + output.conferenceTitle_s;
+          }
+
           const date = document.createElement("div");
           date.className = "date";
           date.innerText =
-            output.producedDate_s + " - " + output.docType_s.toLowerCase();
+            output.producedDate_s + venue + " - " + output.docType_s.toLowerCase();
           cont.append(date);
 
           if (output.hasOwnProperty("abstract_s")) {
