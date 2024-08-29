@@ -59,6 +59,7 @@
 
     .output_block {
       padding-bottom: 45px;
+
     }
 
     #name {
@@ -102,10 +103,6 @@
     padding: 15px;
   }
 
-
-
-
-
   .abstract {
     cursor: pointer;
   }
@@ -114,14 +111,13 @@
     color: red;
   }
 
-  .doi {
-    font-size: 12px;
-  }
 
   .output_block {
 
     font-size: 1rem;
     padding: 15px;
+    padding-bottom: 0px;
+    padding-top: 0px;
   }
 
   .title {
@@ -172,11 +168,11 @@
       to the <a href="http://umr-lisis.fr/membre/guillaume-levrier/" target="_blank">Laboratoire Interdisciplinaire 
         Sciences Innovations Sociétés (LISIS)</a>, and is a research associate to <a 
         href="https://www.sciencespo.fr/cevipof/en/researcher/guillaume-levrier.html"
-       target="_blank">CEVIPOF (Sciences Po)</a> and to the French National Library (BnF). [Click for more info]`,
+       target="_blank">CEVIPOF (Sciences Po)</a> and to the French National Library (BnF). `,
       long: "",
     },
     FR: {
-      short: `Guillaume Levrier est chercheur en sciences
+      short: `Guillaume Levrier est un chercheur en sciences
   politiques
   spécialisé sur les biotechnologies, actuellement postdoc CNRS pour le <a
     href="https://cordis.europa.eu/project/id/951393" target="_blank">projet
@@ -187,7 +183,7 @@
     Innovations Sociétés (LISIS)</a>, est associé au <a
     href="https://www.sciencespo.fr/cevipof/fr/chercheur/guillaume-levrier.html"
     target="_blank">CEVIPOF (Sciences Po)</a> et à la Bibliothèque nationale de
-  France (BnF). [Cliquez ici pour plus d'informations]`,
+  France (BnF).`,
       long: "",
     }
   }
@@ -196,7 +192,7 @@
     Object.keys(description).forEach(d => {
       const div = document.getElementById("desc" + d)
       div.innerHTML = description[d].short;
-      var toggled = 0;
+      /* var toggled = 0;
       div.addEventListener("click", () => {
 
         if (toggled) {
@@ -205,8 +201,8 @@
           div.innerHTML = description[d].long;
         }
         toggled = !toggled;
+      }) */
 
-      })
     })
   }
 
@@ -327,6 +323,7 @@
             cont.append(hal);
           }
 
+          cont.append(document.createElement("br"))
 
 
           return cont;
@@ -335,14 +332,90 @@
         const sifted = siftData(r, val);
 
         const createList = () => {
+          const container = document.createElement("div");
+
           const list = document.createElement("div");
+          list.id = "doclist"
           sifted.forEach((d) => list.append(createblock(d)));
-          document.body.append(list);
+          container.append(list, genrateButtons())
+          document.body.append(container);
         };
 
         createList();
       })
 
 
-  getdata("Guillaume Levrier")
+  const genrateButtons = () => {
+    const buttonList = document.createElement("div");
+
+    // create a bibliography;
+    const biblioButton = document.createElement("button");
+    biblioButton.innerText = "Copy document list to clipboard"
+    biblioButton.addEventListener("click", () => {
+      /* const docCont = document.createElement("div");
+      const docs = document.getElementsByClassName("output_block")
+      for (let i = 0; i < docs.length; i++) {
+        const doc = docs[i];
+        const clone = doc.cloneNode(true);
+        console.log(clone)
+        if (clone.getElementsByClassName("abstract").length > 0) {
+          clone.getElementsByClassName("abstract")[0].remove();
+        }
+        docCont.append(clone);
+      } */
+
+      const doclist = document.getElementById("doclist")
+      const abstracts = doclist.getElementsByClassName("abstract")
+      for (let i = 0; i < abstracts.length; i++) {
+        abstracts[i].innerText = abstracts[i].innerText.replace("[click to read more]", "")
+
+      }
+      copyElementToClipboard(doclist)
+    })
+
+    buttonList.append(biblioButton)
+
+    return buttonList
+  }
+
+  //taken from https://stackoverflow.com/questions/48554043/javascript-copy-element-to-clipboard-with-all-styles
+  function copyElementToClipboard(element) {
+    let range;
+    let selection;
+
+    if (!element) {
+      console.error("No element to copy");
+      return;
+    }
+
+    if (document.body.createTextRange) {
+      range = document.body.createTextRange();
+      // correct method for text range
+      range.moveToElementText(element);
+      range.select();
+    } else if (window.getSelection) {
+      selection = window.getSelection();
+
+      range = document.createRange();
+      // ensuring textElement is passed correctly
+      range.selectNodeContents(element);
+
+      selection.removeAllRanges();
+      selection.addRange(range);
+    }
+
+    try {
+      document.execCommand("copy");
+    } catch (err) {
+      console.error("Unable to copy text: ", err);
+    } finally {
+      if (selection) {
+        selection.removeAllRanges();
+      }
+    }
+  }
+
+  getdata("Guillaume Levrier");
+
+
 </script>
