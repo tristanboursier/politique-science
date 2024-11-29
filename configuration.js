@@ -4,7 +4,7 @@ const config = {
     EN: {
       short: `Guillaume Levrier is a political scientist working on biotechnology. He is a research associate to <a
             href="https://www.sciencespo.fr/cevipof/en/researcher/guillaume-levrier.html"
-            target="_blank">CEVIPOF (Sciences Po)</a> and to the French National Library (BnF). He is a former CNRS postdoc for the
+            target="_blank">CEVIPOF (Sciences Po)</a> and to the French National Library (BnF). He previously was a CNRS postdoc for the
         <a href="https://cordis.europa.eu/project/id/951393" target="_blank">Nanobubbles ERC grant</a> and was affiliated
         to the <a href="http://umr-lisis.fr/membre/guillaume-levrier/" target="_blank">Laboratoire Interdisciplinaire
           Sciences Innovations Sociétés (LISIS)</a>`,
