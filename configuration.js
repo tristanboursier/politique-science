@@ -4,10 +4,9 @@ const config = {
     EN: {
       short: `Guillaume Levrier is a political scientist working on biotechnology. He is a research associate to <a
             href="https://www.sciencespo.fr/cevipof/en/researcher/guillaume-levrier.html"
-            target="_blank">CEVIPOF (Sciences Po)</a> and to the French National Library (BnF). He previously was a CNRS postdoc for the
-        <a href="https://cordis.europa.eu/project/id/951393" target="_blank">Nanobubbles ERC grant</a> and was affiliated
-        to the <a href="http://umr-lisis.fr/membre/guillaume-levrier/" target="_blank">Laboratoire Interdisciplinaire
-          Sciences Innovations Sociétés (LISIS)</a>`,
+            target="_blank">CEVIPOF (Sciences Po)</a> and to the French National Library (BnF). He is also the lead 
+            developer of <a href="https://github.com/Guillaume-Levrier/PANDORAE"target="_blank">PANDORÆ</a> and a 
+            member of the French <a href="https://www.ouvrirlascience.fr/software-and-source-codes-college/"target="_blank">Committee for Open Science</a>.`,
       long: "",
     },
     FR: {
@@ -16,13 +15,8 @@ const config = {
         spécialisé sur les biotechnologies. Il est associé au <a
             href="https://www.sciencespo.fr/cevipof/fr/chercheur/guillaume-levrier.html"
             target="_blank">CEVIPOF (Sciences Po)</a> et à la Bibliothèque nationale de
-        France (BnF). Il était précédemment postdoc CNRS pour le <a
-          href="https://cordis.europa.eu/project/id/951393" target="_blank">projet
-          ERC Nanobubbles</a> et affilié au <a
-            href="http://umr-lisis.fr/membre/guillaume-levrier/"
-            target="_blank">Laboratoire Interdisciplinaire
-          Sciences
-          Innovations Sociétés (LISIS)</a>,.`,
+        France (BnF). Il est aussi l'architecte de <a href="https://github.com/Guillaume-Levrier/PANDORAE"target="_blank">
+        PANDORÆ</a> et membre du <a href="https://www.ouvrirlascience.fr/college-codes-sources-et-logiciels/"target="_blank">comité pour la science ouverte</a>.`,
       long: "",
     },
   },
