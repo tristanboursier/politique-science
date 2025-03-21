@@ -2,8 +2,8 @@ const config = {
   name: "Tristan Boursier",
   description: {
     EN: {
-      short: `Tristan Boursier est docteur en science politique de l’Université de Montréal et de Sciences Po Paris (2023). Il est également diplômé de l'Université de Genève (2016). Sa thèse de doctorat porte sur les obstacles à la solidarité inclusive.
-Avant de rejoindre le CEVIPOF, il a été doctorant invité à l'Université d'Oxford sous la supervision de Cécile Laborde. Il a été également membre de différents réseaux de recherche comme le centre Jean Monnet de Montréal.
+      short: `Tristan Boursier est docteur en science politique de l’Université de Montréal et de Sciences Po Paris (2023). Ses recherches portent sur les convergences au sein des mouvements réactionnaires (extrême droite & antiféminisme). Sa thèse de doctorat porte sur les obstacles à la solidarité inclusive.
+Avant de rejoindre le CEVIPOF, il a été doctorant invité à l'Université d'Oxford..
  
 `,
       long: "",
