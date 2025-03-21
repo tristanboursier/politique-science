@@ -2,11 +2,12 @@ const config = {
   name: "Guillaume Levrier",
   description: {
     EN: {
-      short: `Guillaume Levrier is a political scientist working on biotechnology. He is a research associate to <a
-            href="https://www.sciencespo.fr/cevipof/en/researcher/guillaume-levrier.html"
-            target="_blank">CEVIPOF (Sciences Po)</a> and to the French National Library (BnF). He is also the lead 
-            developer of <a href="https://github.com/Guillaume-Levrier/PANDORAE"target="_blank">PANDORÆ</a> and a 
-            member of the French <a href="https://www.ouvrirlascience.fr/software-and-source-codes-college/"target="_blank">Committee for Open Science</a>.`,
+      short: `Tristan Boursier est docteur en science politique de l’Université de Montréal et de Sciences Po Paris (2023). Il est également diplômé de l'Université de Genève (2016). Sa thèse de doctorat porte sur les obstacles à la solidarité inclusive.
+Avant de rejoindre le CEVIPOF, il a été doctorant invité à l'Université d'Oxford sous la supervision de Cécile Laborde. Il a été également membre de différents réseaux de recherche comme le centre Jean Monnet de Montréal.
+ 
+Ses recherches remettent en question les conceptions traditionnelles de la solidarité politique, en se concentrant sur sa prétendue opposition à la diversité culturelle. Pour cela il interroge les fondements philosophiques de la controverse publique appelée "dilemme progressiste". Dans le cadre de son second axe de recherche, il aborde les questions liées au succès des extrêmes droites en ligne. Pour cela il étudie notamment le phénomène des influenceurs politiques et cartographiant leurs stratégies de diffusion et leurs affinités idéologiques.
+ 
+Dans le cadre de ce second axe, il travaille comme chercheur postdoctorant auprès de Mélissa Blais à l'Université du Québec en Outaouais afin de comprendre les dynamiques transnationales au sein des extrêmes droites entre Amérique du Nord et Europe de l'Ouest. Dans le cadre de cette activité, il est également membre du Chantier sur l'antiféminisme et du Réseau québécois en études féministes (RéQEF).`,
       long: "",
     },
     FR: {
