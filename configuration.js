@@ -22,14 +22,14 @@ const config = {
   },
   links: [
     {
-      label: "twitter",
-      value: "@g_levrier",
-      url: "https://twitter.com/g_levrier",
+      label: "bluesky",
+      value: "@drusdans.bsky.social",
+      url: "https://bsky.app/profile/drusdans.bsky.social",
     },
     {
       label: "google scholar",
       value: "profile",
-      url: "https://scholar.google.com/citations?user=IRiJFNMAAAAJ&hl=en",
+      url: "https://scholar.google.com/citations?user=JNEjtcoAAAAJ&hl=fr",
     },
     {
       label: "pubpeer",
@@ -38,14 +38,14 @@ const config = {
     },
     {
       label: "orcid",
-      value: "3-4801-4770",
-      url: "https://orcid.org/0000-0003-4801-4770",
+      value: "0000-0001-5250-783X",
+      url: "https://orcid.org/my-orcid?orcid=0000-0001-5250-783X",
     },
     {
       label: "linked in",
       value: "profile",
-      url: "https://www.linkedin.com/in/guillaume-levrier-phd-89156838/",
+      url: "https://www.linkedin.com/in/tristan-boursier-ph-d-49060184/",
     },
   ],
-  email: { name: "guillaume.levrier", domain: "politique.science" },
+  email: { name: "tristan.boursier", domain: "sciencespo.fr" },
 };
