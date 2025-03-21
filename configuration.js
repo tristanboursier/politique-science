@@ -1,5 +1,5 @@
 const config = {
-  name: "Guillaume Levrier",
+  name: "Tristan Boursier",
   description: {
     EN: {
       short: `Tristan Boursier est docteur en science politique de l’Université de Montréal et de Sciences Po Paris (2023). Il est également diplômé de l'Université de Genève (2016). Sa thèse de doctorat porte sur les obstacles à la solidarité inclusive.
